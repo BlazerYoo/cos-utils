@@ -59,7 +59,7 @@ if [ $# -ne 2 ]; then
 fi
 
 # Preprocess
-gcc -E $1 > $2.i
+gcc217 -E $1 > $2.i
 if [ $? -ne 0 ]; then
     echo -e "${ERROR}Error: Could not preprocess${RESET}"
     exit 1
@@ -69,7 +69,7 @@ echo -e "${STD}Press Enter to continue...${RESET}"
 read -r
 
 # Compile
-gcc -S $2.i
+gcc217 -S $2.i
 if [ $? -ne 0 ]; then
     echo -e "${ERROR}Error: Could not compile${RESET}"
     exit 1
@@ -79,7 +79,7 @@ echo -e "${STD}Press Enter to continue...${RESET}"
 read -r
 
 # Assembly
-gcc -c $2.s
+gcc217 -c $2.s
 if [ $? -ne 0 ]; then
     echo -e "${ERROR}Error: Could not assemble${RESET}"
     exit 1
@@ -89,7 +89,7 @@ echo -e "${STD}Press Enter to continue...${RESET}"
 read -r
 
 # Link
-gcc $2.o -o $2
+gcc217 $2.o -o $2
 if [ $? -ne 0 ]; then
     echo -e "${ERROR}Error: Could not link${RESET}"
     exit 1
